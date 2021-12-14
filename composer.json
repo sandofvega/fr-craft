@@ -1,8 +1,8 @@
 {
-    "name": "fortrabbit/craft-plugin-list",
+    "name": "fr/craft-plugin-list",
     "autoload": {
         "psr-4": {
-            "Fortrabbit\\CraftPluginList\\": "src/"
+            "Fr\\CraftPluginList\\": "src/"
         }
     },
     "authors": [

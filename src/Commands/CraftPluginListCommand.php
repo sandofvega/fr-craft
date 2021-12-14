@@ -1,11 +1,11 @@
 <?php
 
-namespace Fortrabbit\CraftPluginList\Commands;
+namespace Fr\CraftPluginList\Commands;
 
 use DateTime;
 use Throwable;
 use GuzzleHttp\Client as GuzzleClient;
-use Fortrabbit\CraftPluginList\Models\CraftPluginPackage;
+use Fr\CraftPluginList\Models\CraftPluginPackage;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;

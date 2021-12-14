@@ -3,7 +3,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Fortrabbit\CraftPluginList\Commands\CraftPluginListCommand;
+use Fr\CraftPluginList\Commands\CraftPluginListCommand;
 
 $craftPluginListCommand = new CraftPluginListCommand;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Fortrabbit\CraftPluginList\Models;
+namespace Fr\CraftPluginList\Models;
 
 use DateTime;
 use JsonSerializable;
