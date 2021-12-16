@@ -84,3 +84,7 @@ Example:
 ```bash
 craft-plugin-list --output=output_file.json
 ```
+
+## Note
+
+* If you set a bigger number in the `limit` option. Then try to run the program with VPN, because [packagist.org](https://getcomposer.org/) may block your IP.

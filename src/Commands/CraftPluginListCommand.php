@@ -121,7 +121,7 @@ class CraftPluginListCommand extends Command
             if (isset($packageDetail->abandoned) && $packageDetail->abandoned) continue;
 
             // check extra.handle is not missing in latest version
-            if (!$latestVersion->extra && !$latestVersion->extra->handle) continue;
+            if (!$latestVersion->extra || !$latestVersion->extra->handle) continue;
 
             // push to main array
             array_push(
