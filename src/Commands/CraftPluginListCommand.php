@@ -18,10 +18,14 @@ class CraftPluginListCommand extends Command
 {
     protected static $defaultName = 'craft-plugin-list';
 
-    protected $defaultLimit = 2; // TODO
-    protected $defaultOrder = 'desc';
-    protected $defaultOrderBy = 'downloads';
-    protected $allowedOrderBy = ['downloads', 'favers', 'dependents', 'updated'];
+    private $defaultLimit = 2; // TODO
+    private $defaultOrder = 'desc';
+    private $defaultOrderBy = 'downloads';
+    private $allowedOrderBy = ['downloads', 'favers', 'dependents', 'testLibrary', 'updated'];
+
+    // Source: https://knapsackpro.com/testing_frameworks/alternatives_to/phpunit
+    private $testFrameworks = ['phpunit/phpunit', 'atoum/atoum', 'behat/behat', 'codeception/codeception', 'kahlan/kahlan',
+        'laravel/dusk', 'lens/lens', 'phpspec/phpspec', 'peridot-php/peridot', 'simpletest/simpletest', 'datasift/storyplayer'];
 
     public function __construct()
     {
@@ -56,7 +60,7 @@ class CraftPluginListCommand extends Command
             return Command::FAILURE;
         }
 
-        $orderBy = strtolower($input->getOption('orderBy'));
+        $orderBy = $input->getOption('orderBy');
         if (!in_array($orderBy, $this->allowedOrderBy)) {
             $output->writeln('<error>Invalid orderBy option</error>');
             return Command::FAILURE;
@@ -121,7 +125,18 @@ class CraftPluginListCommand extends Command
             if (isset($packageDetail->abandoned) && $packageDetail->abandoned) continue;
 
             // check extra.handle is not missing in latest version
-            if (!$latestVersion->extra || !$latestVersion->extra->handle) continue;
+            if (!isset($latestVersion->extra) || !isset($latestVersion->extra->handle)) continue;
+
+            // get testLibrary
+            $testLibrary = null;
+            if (isset($latestVersion->{'require-dev'})) {
+                foreach ($latestVersion->{'require-dev'} as $property => $value) {
+                    if (in_array($property, $this->testFrameworks)) {
+                        $testLibrary = $property;
+                        break;
+                    }
+                }
+            }
 
             // push to main array
             array_push(
@@ -131,7 +146,7 @@ class CraftPluginListCommand extends Command
                     $packageDetail->description,
                     $latestVersion->extra->handle,
                     $packageDetail->repository,
-                    null,
+                    $testLibrary,
                     $latestVersion->version,
                     $packageDetail->downloads->monthly,
                     $packageDetail->dependents,

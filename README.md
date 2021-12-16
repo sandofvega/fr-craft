@@ -47,9 +47,11 @@ craft-plugin-list --limit=5
 
 To set order/sort by , use `--orderBy`.
 
-* _Available parameters:_ `downloads`, `favers`, `dependents`, `updated`
+* _Available parameters:_ `downloads`, `favers`, `dependents`, `testLibrary`, `updated`
 
 * _Default:_ `downloads`
+
+* Parameters are **case-sensitive**.
 
 Example:
 
