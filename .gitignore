@@ -1,2 +1,4 @@
 vendor
 .vscode
+.phpunit.result.cache
+tests/output_file.json

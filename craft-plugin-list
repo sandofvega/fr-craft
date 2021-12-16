@@ -9,7 +9,6 @@ use Fr\CraftPluginList\Commands\CraftPluginListCommand;
 $craftPluginListCommand = new CraftPluginListCommand;
 
 $application = new Application();
-
 $application->add($craftPluginListCommand);
 $application->setDefaultCommand($craftPluginListCommand->getName(), true);
 
