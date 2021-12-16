@@ -40,7 +40,7 @@ class CraftPluginListCommand extends Command
                     new InputOption('limit', null, InputOption::VALUE_OPTIONAL, 'Maximum output number', $this->defaultLimit),
                     new InputOption('orderBy', null, InputOption::VALUE_OPTIONAL, 'Sorting by', $this->defaultOrderBy),
                     new InputOption('order', null, InputOption::VALUE_OPTIONAL, 'Sorting order', $this->defaultOrder),
-                    new InputOption('output', null, InputOption::VALUE_OPTIONAL, 'Output path'),
+                    new InputOption('output', null, InputOption::VALUE_OPTIONAL, 'Output file. Must be a json file.'),
                 ])
             );
     }
